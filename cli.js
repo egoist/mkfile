@@ -1,3 +1,5 @@
 #!/usr/bin/env node
-var make = require('make')
+var minimist = require('minimist')
+global.argv = minimist(process.argv.slice(2), { '--': true })
+var make = require('./index')
 make()
