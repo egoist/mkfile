@@ -1,0 +1,28 @@
+{
+  "name": "node-make",
+  "version": "0.0.1",
+  "description": "Make for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "bin": {
+    "mk": "cli.js"
+  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egoist/node-make.git"
+  },
+  "keywords": [
+    "make"
+  ],
+  "author": "EGOIST <0x142857@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/egoist/node-make/issues"
+  },
+  "homepage": "https://github.com/egoist/node-make#readme",
+  "devDependencies": {
+    "ava": "^0.8.0"
+  }
+}
