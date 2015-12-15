@@ -16,6 +16,9 @@ publish:
   npm run build
   npm test
   npm publish
+
+// external task file:
+clean: ./tasks/clean.mk.js
 ```
 
 ## License
