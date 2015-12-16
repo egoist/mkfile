@@ -1,6 +1,6 @@
 {
   "name": "node-make",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Make for Node.js",
   "main": "index.js",
   "scripts": {
@@ -44,6 +44,7 @@
     "pretty-hrtime": "^1.0.1",
     "require-from-string": "^1.1.0",
     "shelljs": "^0.5.3",
+    "strip-comments": "^0.4.2",
     "update-notifier": "^0.6.0"
   }
 }

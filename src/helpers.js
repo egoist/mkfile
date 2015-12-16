@@ -1,4 +1,5 @@
 import path from 'path'
+import stripComments from 'strip-comments'
 import { fs, exists } from './pify'
 
 export async function getFileByOrder (...files) {
@@ -6,7 +7,7 @@ export async function getFileByOrder (...files) {
     if (exists(file)) {
       let data = {
         name: file,
-        value: await fs.readFile(file, 'utf8').catch(err => console.log(err.stack))
+        value: stripComments(await fs.readFile(file, 'utf8').catch(err => console.log(err.stack)))
       }
       return data
     }
