@@ -1,6 +1,6 @@
 # node-make
 
-Makefile and JavaScript...
+It's neither [Jake](http://jakejs.com/) nor [Runfile](https://github.com/runfile/runfile), it's just Makefile and JavaScript.
 
 ## Installation
 
@@ -27,9 +27,9 @@ md:
   console.log(marked(data))
 
 publish:
-  npm run build
-  npm test
-  npm publish
+  exec('npm run build')
+  exec('npm run build')
+  exec('npm publish')
 
 // external task file:
 clean: ./tasks/clean.mk.js
