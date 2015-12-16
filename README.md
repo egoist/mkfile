@@ -42,6 +42,10 @@ clean: ./tasks/clean.mk.js
 emit:
   // callback is optional
   emit('log', callback)
+
+// async/await feature
+read@async:
+  const data = await promiseFn()
 ```
 
 **command line**
