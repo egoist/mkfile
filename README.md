@@ -37,6 +37,11 @@ publish:
 
 // external task file:
 clean: ./tasks/clean.mk.js
+
+// emit a task in a task
+emit:
+  // callback is optional
+  emit('log', callback)
 ```
 
 **command line**

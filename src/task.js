@@ -18,7 +18,7 @@ export function addTasks (tasks) {
   }
 }
 
-export function startTask (task) {
+export function startTask (task, cb) {
   o.start(task, err => {
     if (err) {
       if (err.missingTask) {
@@ -26,6 +26,8 @@ export function startTask (task) {
       } else {
         console.log(err)
       }
+    } else if (cb) {
+      cb()
     }
   })
 }
