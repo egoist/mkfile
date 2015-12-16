@@ -4,7 +4,7 @@
   "description": "Make for Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "ava",
+    "test": "echo \"lol\"",
     "rollup": "rollup -c",
     "dev": "nodemon -x \"npm run rollup\" -w src"
   },
