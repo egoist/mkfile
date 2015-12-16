@@ -13,7 +13,7 @@ o.on('task_stop', e => {
 export function addTasks (tasks) {
   for (let task in tasks) {
     if (typeof tasks[task] === 'function') {
-      o.add(task, tasks[task])
+      o.add(task.substring(2), tasks[task])
     }
   }
 }

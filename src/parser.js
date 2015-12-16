@@ -31,7 +31,7 @@ export default function parser (string) {
           lines.forEach(intro => {
             const [, taskName, externalFile] = intro.match(RE_MATCH_INTRO)
             const taskContent = fs.readFileSync(joinCurrentDir(externalFile), 'utf8')
-            tempLines.push(`export const ${taskName} = () => {
+            tempLines.push(`export const __${taskName} = () => {
               ${taskContent}
             }`)
           })
@@ -39,7 +39,7 @@ export default function parser (string) {
         } else {
           // match taskName, externalFile from line one
           // prepend to function heading
-          lines[0] = `export const ${taskName} = () => {`
+          lines[0] = `export const __${taskName} = () => {`
           // append `}` to function ending
           lines.push('}')
           lines = lines.join('\n')
