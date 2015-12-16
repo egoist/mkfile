@@ -10,6 +10,8 @@ npm install -g node-make
 
 ## Example
 
+**makefile.js**
+
 ```javascript
 @import:
   import fs from 'fs'
@@ -28,11 +30,17 @@ md:
 
 publish:
   exec('npm run build')
-  exec('npm run build')
+  exec('npm test')
   exec('npm publish')
 
 // external task file:
 clean: ./tasks/clean.mk.js
+```
+
+**command line**
+
+```bash
+mk [taskName]
 ```
 
 ## License
