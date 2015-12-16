@@ -1,7 +1,8 @@
 import babel from 'babel-core'
 import requireFromString from 'require-from-string'
 import fs from 'fs'
-import { joinCurrentDir } from './helpers'
+import { joinCurrentDir, stripCommentsInTask } from './helpers'
+import walk from './walk'
 
 const RE_MATCH_TASKS = /(\r?\n){2,}/
 const RE_MATCH_LINES = /\r?\n{1,}/
@@ -20,9 +21,13 @@ export default function parser (string) {
   }
   let code
   try {
-    string = string.split(RE_MATCH_TASKS).filter(s => !!s.replace(/\s+/g, ''))
+    string = string.split(RE_MATCH_TASKS).filter(s => !!s.replace(/\s/g, ''))
+    //strip comments
+    string = string.map(task => {
+      return stripCommentsInTask(task)
+    })
     for (let [i, s] of string.entries()) {
-      let lines = s.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s+/g, ''))
+      let lines = s.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s/g, ''))
       let intro = lines[0]
       if (RE_MATCH_INTRO.test(intro)) {
         let [, taskName, externalFile] = intro.match(RE_MATCH_INTRO)
@@ -30,7 +35,10 @@ export default function parser (string) {
           let tempLines = []
           lines.forEach(intro => {
             const [, taskName, externalFile] = intro.match(RE_MATCH_INTRO)
-            const taskContent = fs.readFileSync(joinCurrentDir(externalFile), 'utf8')
+            let taskContent = fs.readFileSync(joinCurrentDir(externalFile), 'utf8')
+            taskContent = stripCommentsInTask(taskContent)
+            taskContent = taskContent.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s+/g, ''))
+            taskContent = walk(taskContent).join('\n')
             tempLines.push(`export const __${taskName} = () => {
               ${taskContent}
             }`)
@@ -42,6 +50,7 @@ export default function parser (string) {
           lines[0] = `export const __${taskName} = () => {`
           // append `}` to function ending
           lines.push('}')
+          lines = walk(lines)
           lines = lines.join('\n')
         }
         string[i] = lines

@@ -32,6 +32,8 @@ publish:
   exec('npm run build')
   exec('npm test')
   exec('npm publish')
+  // a short-hand for exec()
+  > echo 'starting with > works too!'
 
 // external task file:
 clean: ./tasks/clean.mk.js

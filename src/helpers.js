@@ -1,5 +1,5 @@
-import path from 'path'
 import stripComments from 'strip-comments'
+import path from 'path'
 import { fs, exists } from './pify'
 
 export async function getFileByOrder (...files) {
@@ -7,7 +7,7 @@ export async function getFileByOrder (...files) {
     if (exists(file)) {
       let data = {
         name: file,
-        value: stripComments(await fs.readFile(file, 'utf8').catch(err => console.log(err.stack)))
+        value: await fs.readFile(file, 'utf8').catch(err => console.log(err.stack))
       }
       return data
     }
@@ -22,4 +22,8 @@ export async function getConfigFile (
   customFile = joinCurrentDir('makefile.js')
 ) {
   return await getFileByOrder(customFile, joinCurrentDir('mk.js')).catch(err => console.log(err.stack))
+}
+
+export function stripCommentsInTask (string) {
+  return stripComments(string)//.replace(/(\r?\n){2,}/g, '')
 }
