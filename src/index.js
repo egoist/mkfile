@@ -4,12 +4,13 @@ import parser from './parser'
 class Make {
   constructor () {
     this.matchTask(argv._[0])
+
   }
-  matchTask (taskName) {
+  matchTask (taskName = 'default') {
     this.requireMakeFile()
   }
   async requireMakeFile () {
-    const file = await fs.readFile(process.cwd() + '/makefile.js', 'utf8')
+    const file = await fs.readFile(process.cwd() + '/makefile.js', 'utf8').catch(err => console.log(err))
     console.log(parser(file))
   }
 }
