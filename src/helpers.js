@@ -27,3 +27,16 @@ export async function getConfigFile (
 export function stripCommentsInTask (string) {
   return stripComments(string)//.replace(/(\r?\n){2,}/g, '')
 }
+
+export function parseTaskName (name) {
+  const task = {
+    name,
+    type: ''
+  }
+  const indexOfAsync = name.indexOf('@async')
+  if (indexOfAsync > 0) {
+    task.name = name.substring(0, indexOfAsync)
+    task.type = ' async'
+  }
+  return task
+}

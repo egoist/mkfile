@@ -2,6 +2,7 @@ import { fs } from './pify'
 import { getConfigFile } from './helpers'
 import parser from './parser'
 import { addTasks ,startTask } from './task'
+import './registerGlobal'
 
 class Make {
   constructor () {
