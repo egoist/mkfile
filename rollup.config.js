@@ -5,8 +5,10 @@ export default {
   dest: './index.js',
   plugins: [
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      blacklist: ['regenerator'],
+      optional: ['asyncToGenerator', 'runtime']
     })
   ],
-  format: 'cjs'
+  format: 'cjs',
 }

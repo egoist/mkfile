@@ -12,14 +12,20 @@ o.on('task_stop', e => {
 
 export function addTasks (tasks) {
   for (let task in tasks) {
-    o.add(task, tasks[task])
+    if (typeof tasks[task] === 'function') {
+      o.add(task, tasks[task])
+    }
   }
 }
 
 export function startTask (task) {
   o.start(task, err => {
-    if (err && err.missingTask) {
-      log(`Task '${err.missingTask}' not found`.red)
+    if (err) {
+      if (err.missingTask) {
+        log(`Task '${err.missingTask}' not found`.red)
+      } else {
+        console.log(err)
+      }
     }
   })
 }
