@@ -26,9 +26,6 @@
   "homepage": "https://github.com/egoist/node-make#readme",
   "devDependencies": {
     "ava": "^0.8.0",
-    "babel-plugin-transform-runtime": "^6.3.13",
-    "babel-preset-es2015-rollup": "^1.0.0",
-    "babel-preset-stage-0": "^6.3.13",
     "rollup": "^0.21.2",
     "rollup-plugin-babel": "^2.2.0"
   },
@@ -36,8 +33,15 @@
     "node": ">= 4.0.0"
   },
   "dependencies": {
+    "babel-core": "^5.8.34",
     "babel-runtime": "^5.8.34",
+    "colorful": "^2.1.0",
+    "fancy-log": "^1.1.0",
     "minimist": "^1.2.0",
-    "pify": "^2.3.0"
+    "orchestrator": "^0.3.7",
+    "path-exists": "^2.1.0",
+    "pify": "^2.3.0",
+    "pretty-hrtime": "^1.0.1",
+    "require-from-string": "^1.1.0"
   }
 }

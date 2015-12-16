@@ -2,6 +2,12 @@
 
 Makefile and JavaScript...
 
+## Installation
+
+```bash
+npm install -g node-make
+```
+
 ## Example
 
 ```javascript
@@ -23,4 +29,4 @@ clean: ./tasks/clean.mk.js
 
 ## License
 
-MIT.
+MIT &copy; [EGOIST](https://github.com/egoist)
