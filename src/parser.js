@@ -1,7 +1,12 @@
 import babel from 'babel-core'
 import requireFromString from 'require-from-string'
 import fs from 'fs'
-import { joinCurrentDir, stripCommentsInTask, parseTaskName } from './helpers'
+import {
+  joinCurrentDir,
+  stripCommentsInTask,
+  parseTaskName,
+  generateTaskFn
+} from './helpers'
 import walk from './walk'
 
 const RE_MATCH_TASKS = /(\r?\n){2,}/
@@ -43,16 +48,14 @@ export default function parser (string) {
             taskContent = taskContent.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s+/g, ''))
             taskContent = walk(taskContent).join('\n')
             taskName = parseTaskName(taskName)
-            tempLines.push(`export const __${taskName.name} =${taskName.type} () => {
-              ${taskContent}
-            }`)
+            tempLines.push(generateTaskFn(taskName, taskContent))
           })
           lines = tempLines.join('\n')
         } else {
           // match taskName, externalFile from line one
           // prepend to function heading
           taskName = parseTaskName(taskName)
-          lines[0] = `export const __${taskName.name} =${taskName.type} () => {`
+          lines[0] = generateTaskFn(taskName)
           // append `}` to function ending
           lines.push('}')
           lines = walk(lines)

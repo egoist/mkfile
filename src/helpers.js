@@ -36,7 +36,20 @@ export function parseTaskName (name) {
   const indexOfAsync = name.indexOf('@async')
   if (indexOfAsync > 0) {
     task.name = name.substring(0, indexOfAsync)
-    task.type = ' async'
+    task.type = 'async'
   }
   return task
+}
+
+export function generateTaskFn (task, content) {
+  let fn
+  if (task.type === 'async') {
+    fn = `export const __${task.name} = async () => {`
+  } else {
+    fn = `export const __${task.name} = () => {`
+  }
+  if (content) {
+    fn += `\n${content}\n}`
+  }
+  return fn
 }
