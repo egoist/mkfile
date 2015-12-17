@@ -8,7 +8,7 @@ export async function getFileByOrder (...files) {
     if (await pathExists(file)) {
       let data = {
         name: file,
-        value: await fs.readFile(file, 'utf8').catch(err => console.log(err.stack))
+        value: await fs.readFile(file, 'utf8')
       }
       return data
     }
@@ -24,7 +24,7 @@ export function joinCurrentDir (filePath) {
 export async function getConfigFile (
   customFile = joinCurrentDir('makefile.js')
 ) {
-  return await getFileByOrder(customFile, joinCurrentDir('mk.js')).catch(err => console.log(err.stack))
+  return await getFileByOrder(customFile, joinCurrentDir('mk.js'))
 }
 
 export function stripCommentsInTask (string) {
