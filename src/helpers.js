@@ -1,10 +1,11 @@
 import stripComments from 'strip-comments'
 import path from 'path'
-import { fs, exists } from './pify'
+import pathExists from 'path-exists'
+import { fs } from './pify'
 
 export async function getFileByOrder (...files) {
   for (let file of files) {
-    if (exists(file)) {
+    if (await pathExists(file)) {
       let data = {
         name: file,
         value: await fs.readFile(file, 'utf8').catch(err => console.log(err.stack))
@@ -12,6 +13,8 @@ export async function getFileByOrder (...files) {
       return data
     }
   }
+  log('Could not find Makefile in current directory!'.red)
+  process.exit()
 }
 
 export function joinCurrentDir (filePath) {

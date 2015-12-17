@@ -10,7 +10,11 @@ class Make {
   }
   async requireMakeFile () {
     const file = await getConfigFile(argv.c || argv.config).catch(err => console.log(err.stack))
-    this.runTask(parser(file.value))
+    try {
+      this.runTask(parser(file.value))
+    } catch (err) {
+      console.log(err.stack)
+    }
   }
   runTask (tasks) {
     addTasks(tasks)
