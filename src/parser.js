@@ -1,6 +1,7 @@
 import babel from 'babel-core'
 import requireFromString from 'require-from-string'
 import fs from 'fs'
+import path from 'path'
 import {
   joinCurrentDir,
   stripCommentsInTask,
@@ -20,9 +21,9 @@ const transformOptions = {
   loose: ['es6.modules']
 }
 
-export default function parser (string) {
+export default function parser (string, filePath) {
   if (typeof string !== 'string') {
-    throw new Error('Input is not string!')
+    throw new TypeError('Input is not string!')
   }
   string = string.split(RE_MATCH_TASKS).filter(s => !!s.replace(/\s/g, ''))
   //strip comments
@@ -41,7 +42,7 @@ export default function parser (string) {
         let tempLines = []
         lines.forEach(intro => {
           let [, taskName, externalFile] = intro.match(RE_MATCH_INTRO)
-          let taskContent = fs.readFileSync(joinCurrentDir(externalFile), 'utf8')
+          let taskContent = fs.readFileSync(path.resolve(path.dirname(filePath), externalFile), 'utf8')
           taskContent = stripCommentsInTask(taskContent)
           taskContent = taskContent.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s+/g, ''))
           taskContent = walk(taskContent).join('\n')
