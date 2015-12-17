@@ -1,7 +1,7 @@
 # node-make
 
-[![NPM version](https://img.shields.io/npm/v/node-make.svg?style=flat-square)](https://www.npmjs.com/package/node-make)
-[![NPM download](https://img.shields.io/npm/dm/node-make.svg?style=flat-square)](https://www.npmjs.com/package/node-make)
+[![NPM version](https://img.shields.io/npm/v/node-make.svg)](https://www.npmjs.com/package/node-make)
+[![NPM download](https://img.shields.io/npm/dm/node-make.svg)](https://www.npmjs.com/package/node-make)
 [![Build Status: Linux](https://travis-ci.org/egoist/node-make.svg?branch=master)](https://travis-ci.org/egoist/node-make)
 
 It's neither [Jake](http://jakejs.com/) nor [Runfile](https://github.com/runfile/runfile), it's just Makefile and JavaScript.
