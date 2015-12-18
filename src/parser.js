@@ -1,10 +1,10 @@
 import babel from 'babel-core'
 import requireFromString from 'require-from-string'
 import fs from 'fs'
+import stripComments from 'strip-comments'
 import path from 'path'
 import {
   joinCurrentDir,
-  stripCommentsInTask,
   parseTaskName,
   generateTaskFn
 } from './helpers'
@@ -26,10 +26,6 @@ export default function parser (string, filePath) {
     throw new TypeError('Input is not string!')
   }
   string = resolveIndent(string)
-  //strip comments
-  string = string.map(task => {
-    return stripCommentsInTask(task)
-  })
   for (let [i, s] of string.entries()) {
     let lines = s.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s/g, ''))
     let intro = lines[0]
@@ -39,8 +35,7 @@ export default function parser (string, filePath) {
         let tempLines = []
         lines.forEach(intro => {
           let [, taskName, externalFile] = intro.match(RE_MATCH_INTRO)
-          let taskContent = fs.readFileSync(path.resolve(path.dirname(filePath), externalFile), 'utf8')
-          taskContent = stripCommentsInTask(taskContent)
+          let taskContent = stripComments(fs.readFileSync(path.resolve(path.dirname(filePath), externalFile), 'utf8'))
           taskContent = taskContent.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s+/g, ''))
           taskContent = walk(taskContent).join('\n')
           taskName = parseTaskName(taskName)

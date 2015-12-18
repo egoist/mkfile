@@ -1,10 +1,10 @@
 {
   "name": "node-make",
-  "version": "0.0.3",
+  "version": "0.0.31",
   "description": "Make for Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "npm run rollup && node cli.js -c tests/makefile.js log",
+    "test": "npm run rollup && node cli.js -c tests/makefile.js",
     "rollup": "rollup -c",
     "dev": "nodemon -x \"npm run rollup\" -w src"
   },

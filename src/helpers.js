@@ -8,7 +8,7 @@ export async function getFileByOrder (...files) {
     if (await pathExists(file)) {
       let data = {
         name: file,
-        value: await fs.readFile(file, 'utf8')
+        value: stripComments(await fs.readFile(file, 'utf8'))
       }
       return data
     }
@@ -25,10 +25,6 @@ export async function getConfigFile (
   customFile = joinCurrentDir('makefile.js')
 ) {
   return await getFileByOrder(customFile, joinCurrentDir('mk.js'))
-}
-
-export function stripCommentsInTask (string) {
-  return stripComments(string)//.replace(/(\r?\n){2,}/g, '')
 }
 
 export function parseTaskName (name) {
