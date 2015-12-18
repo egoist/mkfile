@@ -10,7 +10,7 @@ export default function walk (lines) {
     line = line.trim()
     if (RE_MATCH_EXEC.test(line)) {
       const [,,command] = line.match(RE_MATCH_EXEC)
-      return `exec(${JSON.stringify(command)})`
+      return `exec(\`${command}\`)`
     }
     return line
   })
