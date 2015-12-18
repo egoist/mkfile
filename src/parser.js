@@ -9,11 +9,11 @@ import {
   generateTaskFn
 } from './helpers'
 import walk from './walk'
+import resolveIndent from 'resolve-indent'
 
 const RE_MATCH_TASKS = /(\r?\n){2,}/
 const RE_MATCH_LINES = /\r?\n{1,}/
 const RE_MATCH_INTRO = /^([a-zA-Z0-9\@\.\_\-]+)\:\s*([a-zA-Z0-9\.\/]*)/
-const RE_MATCH_IMPORT_INTRO = /^\@import\:\s*/
 
 const transformOptions = {
   blacklist: ['regenerator'],
@@ -25,7 +25,7 @@ export default function parser (string, filePath) {
   if (typeof string !== 'string') {
     throw new TypeError('Input is not string!')
   }
-  string = string.split(RE_MATCH_TASKS).filter(s => !!s.replace(/\s/g, ''))
+  string = resolveIndent(string)
   //strip comments
   string = string.map(task => {
     return stripCommentsInTask(task)
@@ -33,10 +33,7 @@ export default function parser (string, filePath) {
   for (let [i, s] of string.entries()) {
     let lines = s.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s/g, ''))
     let intro = lines[0]
-    if (RE_MATCH_IMPORT_INTRO.test(intro)) {
-      lines.shift(0)
-      string[i] = lines.join('\n')
-    } else if (RE_MATCH_INTRO.test(intro)) {
+    if (RE_MATCH_INTRO.test(intro) && intro.substring(7) !== 'import ') {
       let [, taskName, externalFile] = intro.match(RE_MATCH_INTRO)
       if (externalFile) {
         let tempLines = []

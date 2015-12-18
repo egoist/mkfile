@@ -17,9 +17,8 @@ npm install -g node-make
 **makefile.js**
 
 ```javascript
-@import:
-  import fs from 'fs'
-  import marked from 'marked'
+import fs from 'fs'
+import marked from 'marked'
 
 log:
   log('hi')
