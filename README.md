@@ -35,9 +35,7 @@ md:
 publish:
   exec('npm run build')
   exec('npm test')
-  exec('npm publish')
-  // a short-hand for exec()
-  > echo 'starting with > works too!'
+  exec('npm publish')  
 
 // external task file:
 clean: ./tasks/clean.mk.js
@@ -50,6 +48,22 @@ emit:
 // async/await feature
 read@async:
   const data = await promiseFn()
+
+// single-line exec() commands short-hand
+try:
+  // `argv` is global variable for accessing user input from cli
+  const message = argv.m || new Date()
+  > git add -A
+  > git commit -m "${message}"
+  > git push origin master
+
+// multi-line exec() commands short-hand
+source:
+  >>>
+  export PATH='$PATH:~/go'
+  echo $PATH
+  <<<
+              
 ```
 
 **command line**
