@@ -37,7 +37,7 @@ export default function parser (string, filePath) {
           let [, taskName, externalFile] = intro.match(RE_MATCH_INTRO)
           let taskContent = stripComments(fs.readFileSync(path.resolve(path.dirname(filePath), externalFile), 'utf8'))
           taskContent = taskContent.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s+/g, ''))
-          taskContent = walk(taskContent).join('\n')
+          taskContent = walk(taskContent)
           taskName = parseTaskName(taskName)
           tempLines.push(generateTaskFn(taskName, taskContent))
         })
@@ -50,7 +50,6 @@ export default function parser (string, filePath) {
         // append `}` to function ending
         lines.push('}')
         lines = walk(lines)
-        lines = lines.join('\n')
       }
       string[i] = lines
     }

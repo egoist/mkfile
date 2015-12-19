@@ -13,5 +13,18 @@ if (argv.v || argv.version) {
   process.exit()
 }
 
+if (argv.h || argv.help) {
+  console.log(`
+${'mk'.cyan} ~ ${pkg.version.magenta}
+
+Usage:
+
+  mk -v--version :       Print version
+  mk -h/--help   :       Print docs
+  mk [taskName]  :       Start task by name
+`)
+  process.exit()
+}
+
 var make = require('./index')
 make()
