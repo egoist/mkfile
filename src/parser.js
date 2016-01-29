@@ -43,8 +43,8 @@ export default function parser (string, filePath) {
   let code
   try {
     code = babel.transform(string.join('\n\n'), transformOptions).code
-    return requireFromString(code)
+    return requireFromString(code, path.join(__dirname, `./${path.basename(filePath)}`))
   } catch (e) {
-    console.log(string)
+    console.log(e.stack)
   }
 }

@@ -19,5 +19,4 @@ publish:
   >npm publish
 
 default:
-  emit('log')
-  emit('fs')
+  emit('emit')

@@ -18,8 +18,9 @@ npm install -g node-make
 **makefile.js**
 
 ```javascript
-import fs from 'fs'
-import marked from 'marked'
+// built-in Promisify node core api
+// you can use 'mz' without installation
+import fs from 'mz/fs'
 
 log:
   log('hi')
@@ -28,10 +29,12 @@ log:
     console.log(i)
   }
 
-md:
-  const data = fs.readFileSync('hello.md', 'utf8')
-  console.log(marked(data))
+// async/await
+md@async:
+  const data = await fs.readFile('hello.md', 'utf8')
+  console.log(data)
 
+// shell commands
 publish:
   exec('npm run build')
   exec('npm test')
@@ -41,10 +44,6 @@ publish:
 emit:
   // callback is optional
   emit('log', callback)
-
-// async/await feature
-read@async:
-  const data = await promiseFn()
 
 // single-line exec() commands short-hand
 try:
@@ -60,7 +59,6 @@ source:
   export PATH='$PATH:~/go'
   echo $PATH
   <<<
-
 ```
 
 **command line**
