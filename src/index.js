@@ -1,4 +1,4 @@
-import { fs } from './pify'
+import fs from 'mz/fs'
 import { getConfigFile } from './helpers'
 import parser from './parser'
 import { addTasks ,startTask } from './task'

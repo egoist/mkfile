@@ -1,7 +1,7 @@
 import stripComments from 'strip-comments'
 import path from 'path'
 import pathExists from 'path-exists'
-import { fs } from './pify'
+import fs from 'mz/fs'
 
 export async function getFileByOrder (...files) {
   for (let file of files) {

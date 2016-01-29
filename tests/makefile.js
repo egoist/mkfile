@@ -1,6 +1,5 @@
 import path from 'path'
-import pify from 'pify'
-import fs from 'fs'
+import fs from 'mz/fs'
 
 emit:
   // callback is optional
@@ -11,7 +10,7 @@ log:
   >echo '123'
 
 fs@async:
-  const data = await pify(fs).readFile('../README.md', 'utf8')
+  const data = await fs.readFile(path.resolve('./README.md'), 'utf8')
   console.log(data)
 
 publish:
@@ -19,11 +18,6 @@ publish:
   >npm test
   >npm publish
 
-// what
-ex1: ./tasks/a.mk.js
-ex2: ./tasks/b.mk.js
-
 default:
-  emit('ex1', () => {
-    emit('log')
-  })
+  emit('log')
+  emit('fs')

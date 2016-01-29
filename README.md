@@ -37,9 +37,6 @@ publish:
   exec('npm test')
   exec('npm publish')  
 
-// external task file:
-clean: ./tasks/clean.mk.js
-
 // emit a task in a task
 emit:
   // callback is optional
@@ -63,7 +60,7 @@ source:
   export PATH='$PATH:~/go'
   echo $PATH
   <<<
-              
+
 ```
 
 **command line**

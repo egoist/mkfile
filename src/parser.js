@@ -13,7 +13,7 @@ import resolveIndent from 'resolve-indent'
 
 const RE_MATCH_TASKS = /(\r?\n){2,}/
 const RE_MATCH_LINES = /\r?\n{1,}/
-const RE_MATCH_INTRO = /^([a-zA-Z0-9\@\.\_\-]+)\:\s*([a-zA-Z0-9\.\/]*)/
+const RE_MATCH_INTRO = /^([a-zA-Z0-9\@\.\_\-]+)\:\s*/
 
 const transformOptions = {
   presets: [require('babel-preset-es2015'), require('babel-preset-stage-0')],
@@ -29,30 +29,22 @@ export default function parser (string, filePath) {
     let lines = s.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s/g, ''))
     let intro = lines[0]
     if (RE_MATCH_INTRO.test(intro) && intro.substring(7) !== 'import ') {
-      let [, taskName, externalFile] = intro.match(RE_MATCH_INTRO)
-      if (externalFile) {
-        let tempLines = []
-        lines.forEach(intro => {
-          let [, taskName, externalFile] = intro.match(RE_MATCH_INTRO)
-          let taskContent = stripComments(fs.readFileSync(path.resolve(path.dirname(filePath), externalFile), 'utf8'))
-          taskContent = taskContent.split(RE_MATCH_LINES).filter(line => !!line.replace(/\s+/g, ''))
-          taskContent = walk(taskContent)
-          taskName = parseTaskName(taskName)
-          tempLines.push(generateTaskFn(taskName, taskContent))
-        })
-        lines = tempLines.join('\n')
-      } else {
-        // match taskName, externalFile from line one
-        // prepend to function heading
-        taskName = parseTaskName(taskName)
-        lines[0] = generateTaskFn(taskName)
-        // append `}` to function ending
-        lines.push('}')
-        lines = walk(lines)
-      }
+      let [, taskName] = intro.match(RE_MATCH_INTRO)
+      // match taskName, externalFile from line one
+      // prepend to function heading
+      taskName = parseTaskName(taskName)
+      lines[0] = generateTaskFn(taskName)
+      // append `}` to function ending
+      lines.push('}')
+      lines = walk(lines)
       string[i] = lines
     }
   }
-  const { code } = babel.transform(string.join('\n\n'), transformOptions)
-  return requireFromString(code)
+  let code
+  try {
+    code = babel.transform(string.join('\n\n'), transformOptions).code
+    return requireFromString(code)
+  } catch (e) {
+    console.log(string)
+  }
 }
