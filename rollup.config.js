@@ -6,8 +6,9 @@ export default {
   plugins: [
     babel({
       exclude: 'node_modules/**',
-      blacklist: ['regenerator'],
-      optional: ['asyncToGenerator', 'runtime']
+      presets: ['es2015-rollup', 'stage-0'],
+      plugins: ['transform-runtime'],
+      runtimeHelpers: true
     })
   ],
   format: 'cjs',

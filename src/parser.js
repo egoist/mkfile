@@ -16,9 +16,8 @@ const RE_MATCH_LINES = /\r?\n{1,}/
 const RE_MATCH_INTRO = /^([a-zA-Z0-9\@\.\_\-]+)\:\s*([a-zA-Z0-9\.\/]*)/
 
 const transformOptions = {
-  blacklist: ['regenerator'],
-  optional: ['asyncToGenerator', 'runtime'],
-  loose: ['es6.modules']
+  presets: [require('babel-preset-es2015'), require('babel-preset-stage-0')],
+  plugins: [require('babel-plugin-transform-runtime')]
 }
 
 export default function parser (string, filePath) {
