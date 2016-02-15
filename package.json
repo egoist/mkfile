@@ -1,6 +1,6 @@
 {
   "name": "node-make",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Make for Node.js",
   "main": "index.js",
   "scripts": {
