@@ -6,8 +6,7 @@ emit:
   emit('log', () => console.log('done'))
 
 log:
-// a short-hand for exec()
-  >echo '123'
+  > echo ${'love'.blue}
 
 fs@async:
   const data = await fs.readFile(path.resolve('./README.md'), 'utf8')

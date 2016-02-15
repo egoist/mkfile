@@ -59,6 +59,10 @@ source:
   export PATH='$PATH:~/go'
   echo $PATH
   <<<
+
+log:
+  // native color support
+  > echo ${'I love you'.red}
 ```
 
 **command line**

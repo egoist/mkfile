@@ -17,7 +17,8 @@ const RE_MATCH_INTRO = /^([a-zA-Z0-9\@\.\_\-]+)\:\s*/
 
 const transformOptions = {
   presets: [require('babel-preset-es2015'), require('babel-preset-stage-0')],
-  plugins: [require('babel-plugin-transform-runtime')]
+  plugins: [require('babel-plugin-transform-runtime')],
+  babelrc: false
 }
 
 export default function parser (string, filePath) {

@@ -49,7 +49,7 @@
     "require-from-string": "^1.1.0",
     "resolve-indent": "^0.1.0",
     "shelljs": "^0.5.3",
-    "strip-comments": "^0.4.2",
+    "strip-comments": "0.4.2",
     "update-notifier": "^0.6.0"
   }
 }
