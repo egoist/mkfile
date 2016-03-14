@@ -34,7 +34,7 @@
     "semicolon": false,
     "space": 2,
     "ignores": [
-      "test/makefile.js"
+      "test/mkfile.js"
     ]
   },
   "dependencies": {

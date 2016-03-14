@@ -15,14 +15,14 @@ class Make {
     const taskName = cli.input[0] || 'default'
 
     // get and parse makefile
-    const configFile = cli.flags.config || 'makefile.js'
+    const configFile = cli.flags.config || 'mkfile.js'
     const makefilePath = cwd(configFile)
 
     // change current working dir
     process.chdir(path.dirname(makefilePath))
 
     if (!pathExists.sync(makefilePath)) {
-      return event.emit('makefile not found', makefilePath)
+      return event.emit('mkfile not found', makefilePath)
     }
 
     let makefileContent = fs.read(makefilePath, 'utf8')

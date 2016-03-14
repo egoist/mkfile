@@ -13,7 +13,7 @@ $ npm install -g mkfile
 
 ## Usage
 
-**makefile.js** example:
+**mkfile.js** example:
 
 ```js
 export function clean() {
