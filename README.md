@@ -42,6 +42,21 @@ $ mk
 $ mk build
 ```
 
+## CLI
+
+```bash
+$ mk -h
+
+  Task driven build tool.
+
+  Usage:
+    mk [taskName]
+
+    -c/--config:     Use custom mkfile
+    -v/--version:    Print version
+    -h/--help:       Print help
+```
+
 ## API
 
 ### `cli`

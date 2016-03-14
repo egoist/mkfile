@@ -9,6 +9,7 @@ const cli = meow(`
   ${`Usage:`.bold}
     mk [taskName]
 
+    -c/--config:     Use custom mkfile
     -v/--version:    Print version
     -h/--help:       Print help
 `, {
