@@ -18,13 +18,13 @@ $ npm install -g node-make
 export function clean() {
   // clean `build` directory
   this.fs.delete('./build')
-  // or this.shell.exec('rm ./build')
+  // or rm('-rf', './build')
 }
 
 export function build() {
   this.run('clean')
   // run webpack
-  this.exec('./node_modules/.bin/webpack -p')
+  exec('./node_modules/.bin/webpack -p')
 }
 
 export default function() {
@@ -49,7 +49,7 @@ $ mk build
 
 Built-in `fs` helpers, see usage at [mem-fs-editor](https://github.com/SBoudrias/mem-fs-editor).
 
-#### .shell
+### `global variables`
 
 Built-in `unix shell` commands, see usage at [shelljs](https://github.com/shelljs/shelljs).
 

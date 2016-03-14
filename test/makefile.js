@@ -1,5 +1,7 @@
 export function log() {
   console.log('wow')
+  const data = cat('test.js')
+  console.log(data)
 }
 
 export function child() {

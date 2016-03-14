@@ -6,7 +6,7 @@ const babel = require('babel-core')
 const requireFromString = require('require-from-string')
 const event = require('./lib/event')
 const fs = require('./lib/built-in-fs')
-const shell = require('shelljs')
+require('shelljs/global')
 
 class Make {
   constructor(cli) {
@@ -46,7 +46,6 @@ class Make {
     // built-in helpers
     const self = {
       fs,
-      shell,
       run: this.runTask.bind(this)
     }
     for (const name in tasks) {
