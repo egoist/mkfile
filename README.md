@@ -1,4 +1,4 @@
-# node-make [![NPM version](https://img.shields.io/npm/v/node-make.svg)](https://npmjs.com/package/node-make) [![NPM downloads](https://img.shields.io/npm/dm/node-make.svg)](https://npmjs.com/package/node-make) [![Build Status](https://img.shields.io/circleci/project/egoist/node-make/master.svg)](https://circleci.com/gh/egoist/node-make)
+# node-make [![NPM version](https://img.shields.io/npm/v/node-make.svg)](https://npmjs.com/package/node-make) [![NPM downloads](https://img.shields.io/npm/dm/node-make.svg)](https://npmjs.com/package/node-make) [![Build Status](https://img.shields.io/circleci/project/egoist/node-make/1.0.svg)](https://circleci.com/gh/egoist/node-make)
 
 > Task driven build tool.
 
