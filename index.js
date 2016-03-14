@@ -30,7 +30,7 @@ class Make {
       plugins: [require('babel-plugin-transform-runtime')]
     }).code
     makefileContent = requireFromString(makefileContent, {
-      appendPaths: [__dirname + '/node_modules']
+      appendPaths: [path.join(__dirname, 'node_modules')]
     })
     this.addTasks(makefileContent)
 
