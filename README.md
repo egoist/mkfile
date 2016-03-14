@@ -43,6 +43,10 @@ $ mk build
 
 ## API
 
+### `cli`
+
+CLI arguments parsed by [meow](https://github.com/sindresorhus/meow), the object contains `.input` and `.flags`.
+
 ### `this`
 
 #### .fs

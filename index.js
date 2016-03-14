@@ -10,6 +10,7 @@ require('shelljs/global')
 
 class Make {
   constructor(cli) {
+    global.cli = cli
     // get task name to run, task `default` by default
     const taskName = cli.input[0] || 'default'
 
@@ -59,6 +60,7 @@ class Make {
     tasks.forEach(task => {
       event.emit('start task', task)
       this.tasks[task]()
+      event.emit('done task', task)
     })
   }
 }
