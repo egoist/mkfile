@@ -32,7 +32,10 @@
   },
   "xo": {
     "semicolon": false,
-    "space": 2
+    "space": 2,
+    "ignores": [
+      "test/makefile.js"
+    ]
   },
   "dependencies": {
     "babel-core": "^6.7.2",
