@@ -1,4 +1,5 @@
-# mkfile [![NPM version](https://img.shields.io/npm/v/mkfile.svg)](https://npmjs.com/package/mkfile) [![NPM downloads](https://img.shields.io/npm/dm/mkfile.svg)](https://npmjs.com/package/mkfile) [![Build Status](https://img.shields.io/circleci/project/egoist/mkfile/1.0.svg)](https://circleci.com/gh/egoist/mkfile)
+# mkfile [![NPM version](https://img.shields.io/npm/v/mkfile.svg)](https://npmjs.com/package/mkfile) [![NPM downloads](https://img.shields.io/npm/dm/mkfile.svg)](https://npmjs.com/package/mkfile) [![Build Status](https://img.shields.io/circleci/project/egoist/mkfile/1.0.svg)](https://circleci.com/gh/egoist/mkfile) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+
 
 > Task driven build tool.
 
