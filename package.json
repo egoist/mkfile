@@ -1,9 +1,9 @@
 {
-  "name": "node-make",
+  "name": "mkfile",
   "version": "1.1.1",
   "description": "Task driven build tool.",
   "license": "MIT",
-  "repository": "egoist/node-make",
+  "repository": "egoist/mkfile",
   "author": {
     "name": "EGOIST",
     "email": "0x142857@gmail.com",

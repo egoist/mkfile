@@ -1,4 +1,4 @@
-# node-make [![NPM version](https://img.shields.io/npm/v/node-make.svg)](https://npmjs.com/package/node-make) [![NPM downloads](https://img.shields.io/npm/dm/node-make.svg)](https://npmjs.com/package/node-make) [![Build Status](https://img.shields.io/circleci/project/egoist/node-make/1.0.svg)](https://circleci.com/gh/egoist/node-make)
+# mkfile [![NPM version](https://img.shields.io/npm/v/mkfile.svg)](https://npmjs.com/package/mkfile) [![NPM downloads](https://img.shields.io/npm/dm/mkfile.svg)](https://npmjs.com/package/mkfile) [![Build Status](https://img.shields.io/circleci/project/egoist/mkfile/1.0.svg)](https://circleci.com/gh/egoist/mkfile)
 
 > Task driven build tool.
 
@@ -7,7 +7,7 @@ Full-feature ES2015+ driven task runner.
 ## Install
 
 ```bash
-$ npm install -g node-make
+$ npm install -g mkfile
 ```
 
 ## Usage
