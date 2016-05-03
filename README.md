@@ -66,6 +66,10 @@ $ mk -h
 
 Built-in `fs` helpers, see usage at [mem-fs-editor](https://github.com/SBoudrias/mem-fs-editor).
 
+#### .run
+
+Run a task by name.
+
 ### `global variables`
 
 - `cli` CLI arguments parsed by [meow](https://github.com/sindresorhus/meow), the object contains `.input` and `.flags`.
