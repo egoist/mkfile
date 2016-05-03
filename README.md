@@ -64,7 +64,7 @@ $ mk -h
 
 #### .fs
 
-Built-in `fs` helpers, see usage at [mem-fs-editor](https://github.com/SBoudrias/mem-fs-editor).
+Built-in in-memory `fs` helpers, see usage at [mem-fs-editor](https://github.com/SBoudrias/mem-fs-editor).
 
 #### .run
 
