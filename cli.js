@@ -10,7 +10,7 @@ const cli = meow(`
     mk [taskName]
 
     -c/--config:     Use custom mkfile
-    -l/--ls:         List all tasks
+    -l/--ls:         List all task names
     -v/--version:    Print version
     -h/--help:       Print help
 `, {

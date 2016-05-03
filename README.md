@@ -53,15 +53,12 @@ $ mk -h
     mk [taskName]
 
     -c/--config:     Use custom mkfile
+    -l/--list:       List all task names
     -v/--version:    Print version
     -h/--help:       Print help
 ```
 
 ## API
-
-### `cli`
-
-CLI arguments parsed by [meow](https://github.com/sindresorhus/meow), the object contains `.input` and `.flags`.
 
 ### `this`
 
@@ -71,7 +68,8 @@ Built-in `fs` helpers, see usage at [mem-fs-editor](https://github.com/SBoudrias
 
 ### `global variables`
 
-Built-in `unix shell` commands, see usage at [shelljs](https://github.com/shelljs/shelljs).
+- `cli` CLI arguments parsed by [meow](https://github.com/sindresorhus/meow), the object contains `.input` and `.flags`.
+- Built-in `unix shell` commands, see usage at [shelljs](https://github.com/shelljs/shelljs).
 
 ## License
 
