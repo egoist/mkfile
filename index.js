@@ -30,10 +30,16 @@ class Make {
       presets: [require('babel-preset-es2015'), require('babel-preset-stage-0')],
       plugins: [require('babel-plugin-transform-runtime')]
     }).code
-    makefileContent = requireFromString(makefileContent, {
+    makefileContent = requireFromString(makefileContent, makefilePath, {
       appendPaths: [path.join(__dirname, 'node_modules')]
     })
     this.addTasks(makefileContent)
+
+    // -l, --list options
+    if (cli.flags.list) {
+      console.log(Object.keys(this.tasks).join('\n'))
+      return
+    }
 
     // run task by name
     const task = makefileContent[taskName]
