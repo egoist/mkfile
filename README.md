@@ -1,6 +1,5 @@
 # mkfile [![NPM version](https://img.shields.io/npm/v/mkfile.svg)](https://npmjs.com/package/mkfile) [![NPM downloads](https://img.shields.io/npm/dm/mkfile.svg)](https://npmjs.com/package/mkfile) [![Build Status](https://img.shields.io/circleci/project/egoist/mkfile/1.0.svg)](https://circleci.com/gh/egoist/mkfile) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
-
 > Task driven build tool.
 
 Full-feature ES2015+ driven task runner.
@@ -18,8 +17,7 @@ $ npm install -g mkfile
 ```js
 export function clean() {
   // clean `build` directory
-  this.fs.delete('./build')
-  // or rm('-rf', './build')
+  rm('-rf', './build')
 }
 
 export function build() {
@@ -61,10 +59,6 @@ $ mk -h
 ## API
 
 ### `this`
-
-#### .fs
-
-Built-in in-memory `fs` helpers, see usage at [mem-fs-editor](https://github.com/SBoudrias/mem-fs-editor).
 
 #### .run
 

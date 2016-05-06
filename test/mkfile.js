@@ -9,3 +9,5 @@ export function child() {
   console.log(content)
   require('child_process').spawnSync('ls', ['../', '-h'], {stdio: 'inherit'})
 }
+
+export const multi = ['log', 'child']

@@ -5,7 +5,6 @@ const pathExists = require('path-exists')
 const babel = require('babel-core')
 const requireFromString = require('require-from-string')
 const event = require('./lib/event')
-const fs = require('./lib/built-in-fs')
 require('shelljs/global')
 
 class Make {
@@ -52,21 +51,28 @@ class Make {
     this.tasks = {}
     // built-in helpers
     const self = {
-      fs,
       run: this.runTask.bind(this)
     }
     for (const name in tasks) {
-      if (tasks[name]) {
-        this.tasks[name] = tasks[name].bind(self)
+      const task = tasks[name]
+      if (task) {
+        this.tasks[name] = typeof task === 'function'
+          ? task.bind(self)
+          : task
       }
     }
   }
   runTask() {
     const tasks = [].slice.call(arguments)
     tasks.forEach(task => {
-      event.emit('start task', task)
-      this.tasks[task]()
-      event.emit('done task', task)
+      const fn = this.tasks[task]
+      if (typeof fn === 'function') {
+        event.emit('start task', task)
+        fn()
+        event.emit('done task', task)
+      } else if (Array.isArray(fn)) {
+        this.runTask.apply(this, fn)
+      }
     })
   }
 }
