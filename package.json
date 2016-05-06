@@ -1,6 +1,6 @@
 {
   "name": "mkfile",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Task driven build tool.",
   "license": "MIT",
   "repository": "egoist/mkfile",
@@ -37,7 +37,10 @@
       "test/mkfile.js"
     ],
     "rules": {
-      "operator-linebreak": [2, "before"],
+      "operator-linebreak": [
+        2,
+        "before"
+      ],
       "guard-for-in": 0
     }
   },
