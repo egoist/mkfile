@@ -1,4 +1,5 @@
 'use strict'
+const fs = require('fs')
 const path = require('path')
 const cwd = require('cwd')
 const pathExists = require('path-exists')
@@ -24,7 +25,7 @@ class Make {
       return event.emit('mkfile not found', makefilePath)
     }
 
-    let makefileContent = fs.read(makefilePath, 'utf8')
+    let makefileContent = fs.readFileSync(makefilePath, 'utf8')
     makefileContent = babel.transform(makefileContent, {
       presets: [require('babel-preset-es2015'), require('babel-preset-stage-0')],
       plugins: [require('babel-plugin-transform-runtime')]
